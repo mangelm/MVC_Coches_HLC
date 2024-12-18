@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hlc.coche_MVC.entidad.Coche;
+import com.hlc.coche_MVC.servicio.CocheServicio;
 
 import jakarta.annotation.PostConstruct;
 

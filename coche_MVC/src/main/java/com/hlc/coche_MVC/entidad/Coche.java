@@ -10,7 +10,6 @@ public class Coche {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
 	private Long id;
 	
 	private String Marca;
