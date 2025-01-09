@@ -24,7 +24,7 @@ public class CocheServicio {
 		return cocheRepositorio.save(coche);
 	}
 	
-	public Coche obtenerCochePorId (long id) {
+	public Coche obtenerCochePorId (Long id) {
 		return cocheRepositorio.findById(id).orElseThrow(() ->
 				new IllegalArgumentException("Coche no encontrado con id: " + id));
 	}

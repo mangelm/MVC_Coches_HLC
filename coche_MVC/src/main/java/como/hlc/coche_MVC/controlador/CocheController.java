@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.hlc.coche_MVC.entidad.Coche;
 import com.hlc.coche_MVC.servicio.CocheServicio;
@@ -34,7 +35,7 @@ public class CocheController {
 		return "coche-form";
 	}
 	
-	@GetMapping("/coche")
+	@PostMapping("/coche")
 	public String guardarCoche(@ModelAttribute Coche coche) {
 		cocheServicio.guardarCoche(coche);
 		return "redirect:/";

@@ -11,10 +11,14 @@ import jakarta.annotation.PostConstruct;
 @Component
 public class InicializarDatos {
 	@Autowired
-		private CocheServicio cocheServicio;
+	private CocheServicio cocheServicio;
 		
 	@PostConstruct
 	public void init() {
+		
+		if (cocheServicio.listarTodosLosCoches().iterator().hasNext()) {
+            return;
+        }
 		
 		Coche coche1 = new Coche();
 		coche1.setMarca("Toyota");
