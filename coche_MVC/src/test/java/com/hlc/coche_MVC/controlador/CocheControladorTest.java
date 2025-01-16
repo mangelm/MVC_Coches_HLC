@@ -1,5 +1,6 @@
 package com.hlc.coche_MVC.controlador;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.times;
@@ -27,9 +28,12 @@ import com.hlc.coche_MVC.servicio.CocheServicio;
 
 @WebMvcTest(CocheControlador.class)
 public class CocheControladorTest {
+	
+	// Inyecta automáticamente un objeto MockMvc para realizar pruebas de controladores de Spring MVC
     @Autowired
     private MockMvc mockMvc;
     
+    // Crea un mock de la clase CocheServicio para simular su comportamiento en las pruebas
     @MockitoBean
     private CocheServicio cocheServicio;
     
@@ -64,12 +68,13 @@ public class CocheControladorTest {
 
 	// Prueba que se renderiza la vista 'formulario' con un nuevo objeto coche en el modelo.
     @Test
-    @DisplayName("Debe mostrar el formulario para agregar un nuevo coche")
+    @DisplayName("Debe mostrar el formulario para agregar un nuevo coche con el objeto correcto")
     void testMostrarFormularioNuevoCoche() throws Exception {
         mockMvc.perform(get("/coches/nuevo"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("coches/formulario"))
-                .andExpect(model().attributeExists("coche"));
+                .andExpect(model().attributeExists("coche"))
+                .andExpect(model().attribute("coche", instanceOf(Coche.class))); // Verifica que el atributo es una instancia de Coche
     }
     
     // Prueba que el controlador guarda un coche a través del servicio y redirige correctamente.
@@ -87,7 +92,7 @@ public class CocheControladorTest {
     
     // Prueba que el controlador muestra el formulario con los datos del coche existente para edición.
     @Test
-    @DisplayName("Debe mostrar el formulario para editar un coche existente")
+    @DisplayName("Debe mostrar el formulario para editar un coche existente con el objeto correcto")
     void testMostrarFormularioEditarCoche() throws Exception {
         Coche coche = new Coche("Toyota", "1234ABC", "Rojo");
         coche.setId(1L);
