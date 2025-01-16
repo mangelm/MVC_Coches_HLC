@@ -11,7 +11,7 @@ import com.hlc.coche_MVC.repositorio.CocheRepositorio;
 @Service
 public class CocheServicioImpl implements CocheServicio {
 	
-	private CocheRepositorio cocheRepositorio;
+	private final CocheRepositorio cocheRepositorio;
 
 	public CocheServicioImpl(CocheRepositorio cocheRepositorio) {
 		this.cocheRepositorio = cocheRepositorio;
@@ -35,7 +35,6 @@ public class CocheServicioImpl implements CocheServicio {
 	@Override
 	public void eliminarCoche(Long id) {
 		cocheRepositorio.deleteById(id);
-		
 	}
 
 }
