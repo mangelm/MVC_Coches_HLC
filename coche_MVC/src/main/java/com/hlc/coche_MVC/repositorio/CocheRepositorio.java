@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hlc.coche_MVC.entidad.Coche;
 
-@Repository
+@Repository // --> JpaRepository  incluye todos los métodos de CrudRepository y PagingAndSortingRepository
 public interface CocheRepositorio extends JpaRepository<Coche, Long> {
 	
 }
