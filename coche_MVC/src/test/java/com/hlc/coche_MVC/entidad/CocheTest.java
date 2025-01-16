@@ -16,37 +16,43 @@ class CocheTest {
 	}
 
 	@Test
-	@DisplayName("Prueba de Getter and Setter de ID")
-	void testSetAndGetID() {
-		Long id = 1L;
-		coche.setId(1L);
-		
-		assertEquals(id, coche.getId(), "El ID no es el mismo");
-		
-	}
-	
-	@Test
-	@DisplayName("Prueba de Getter y Setter de Marca")
-	void testSetterGetterMarca() {
-		String resultadoEsperado = "Toyota";
-		
-		coche.setMarca(resultadoEsperado);
-		
-		assertEquals(resultadoEsperado, coche.getMarca(), "Marca no se corresponde con el getter");
-	}
-	
-	@Test
-	@DisplayName("Prueba de Constructor con parámetros")
-	void testConstructorConParametros() {
+	void testConstructorWithParameters() {
 		String marca = "Toyota";
-		String matricula = "1245ABC";
-		String color = "Rojo";
-		
-		Coche coche = new Coche(marca, matricula, color);
-		
-		assertEquals(marca, coche.getMarca(), "La marca del constructor no coincide");
-		assertEquals(matricula, coche.getMatricula());
-		assertEquals(color, coche.getColor());
-		
-	}
+	    String matricula = "1234ABC";
+	    String color = "Rojo";
+	    
+	    Coche coche = new Coche(marca, matricula, color);
+	    
+	    assertEquals(marca, coche.getMarca(), "La marca debería coincidir con el valor pasado al constructor");
+	    assertEquals(matricula, coche.getMatricula(), "La matrícula debería coincidir con el valor pasado al constructor");
+	    assertEquals(color, coche.getColor(), "El color debería coincidir con el valor pasado al constructor");
+	 }
+	
+	 @Test
+	 void testSetAndGetId() {
+		 Long id = 1L;
+	     coche.setId(id);
+	     assertEquals(id, coche.getId(), "El ID debe ser igual al valor configurado");
+	 }
+	 
+	 @Test
+	 void testSetAndGetMarca() {
+		 String marca = "Toyota";
+	     coche.setMarca(marca);
+	     assertEquals(marca, coche.getMarca(), "La marca debe ser igual al valor configurado");
+	 }
+	    
+	 @Test
+	 void testSetAndGetMatricula() {
+		 String matricula = "1234ABC";
+	     coche.setMatricula(matricula);
+	     assertEquals(matricula, coche.getMatricula(), "La matrícula debe ser igual al valor configurado");
+	 }
+	    
+	 @Test
+	 void testSetAndGetColor() {
+		 String color = "Rojo";
+	     coche.setColor(color);
+	     assertEquals(color, coche.getColor(), "El color debe ser igual al valor configurado");
+	 }
 }
